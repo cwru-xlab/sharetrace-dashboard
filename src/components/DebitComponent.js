@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Label, Input, Col,FormFeedback} from 'reactstrap';
-import Checkbox from './Checkbox'
 var config = require('../config');
 
 class Debit extends Component{
@@ -9,8 +8,21 @@ class Debit extends Component{
         super(props);
 
         this.state = {
-            sponsors: [],
-            checked: []
+            sponsors: [
+                {
+                  name: "A",
+                  description: "AAA",
+                  time_remaining: "30 days"  
+                },
+                {
+                    name: "B",
+                    description: "BBB",
+                    time_remaining: "30 days"  
+                  }
+            ],
+            checked:[true, false]
+            // sponsors: [],
+            // checked: []
         }
     }
 
@@ -38,6 +50,7 @@ class Debit extends Component{
         }
         fetch(config.serverUrl+'/debit/'+this.props.username, {
             method: 'PUT',
+            body: JSON.stringify(databody),
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'bearer '+this.props.token
@@ -52,24 +65,24 @@ class Debit extends Component{
     }
 
     handleChange(event, index){
-        this.state.checked[index] = event.target.value;
+        this.state.checked[index] = event.target.checked;
         this.setState({checked: this.state.checked});
+        alert(JSON.stringify(this.state.checked));
     }
 
     render(){
-
         const debits = this.state.sponsors.map((debit, index) => {
             return(
-                <FormGroup row>
                     <tr>
                         <td>{debit.name}</td>
                         <td>{debit.time_remaining}</td>
                         <td>{debit.description}</td>
-                        <Label>
-                            <Checkbox checked={this.state.checked[index]} onChange={(e) => this.handleChange(e, index)} />
-                        </Label>
+                        <td>
+                            <label>
+                                <input name="renew" type="checkbox" checked={this.state.checked[index]} onChange={(e) => this.handleChange(e, index)} />
+                            </label>
+                        </td>
                     </tr>
-                </FormGroup>
             );
         })
 
@@ -81,15 +94,17 @@ class Debit extends Component{
                     <br />
                 </div>
                 <Form onSubmit={this.handleSubmit}>
-                    <table id="debit">
-                        <tr>
-                            <th>Sponsor</th>
-                            <th>Time Remaining</th>
-                            <th>Description</th>
-                            <th>Renew</th>
-                        </tr>
-                        {debits}
-                    </table>
+                    <FormGroup>
+                        <table id="debit">
+                            <tr>
+                                <th>Sponsor</th>
+                                <th>Time Remaining</th>
+                                <th>Description</th>
+                                <th>Renew</th>
+                            </tr>
+                            {debits}
+                        </table>
+                    </FormGroup>
                     <br />
                     <FormGroup row>
                         <Col sm={6} md={{size: 2, offset:9}}>
