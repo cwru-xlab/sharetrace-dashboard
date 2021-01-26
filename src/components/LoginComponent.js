@@ -108,7 +108,7 @@ class Login extends Component{
                             </FormGroup>
                         </Col>
                         <Col xs={12} md={{size: 5}}>
-                            <Link style={{position:"absolute", bottom:"10px"}} to={{pathname: `/users/signup`}}>Create a new account</Link>
+                            <Link style={{position:"absolute", bottom:"10px", textDecoration:"underline"}} to={{pathname: `/users/signup`}}>Create a new account</Link>
                         </Col>
                     </Row>
                 </Form>

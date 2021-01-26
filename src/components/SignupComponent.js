@@ -106,7 +106,7 @@ class Signup extends Component{
                             </FormGroup>
                         </Col>
                         <Col xs={12} md={{size: 5}}>
-                            <Link style={{position:"absolute", bottom:"10px"}} to={{pathname: `/users/login`}}>Already have an account</Link>
+                            <Link style={{position:"absolute", bottom:"10px", textDecoration:"underline"}} to={{pathname: `/users/login`}}>Already have an account</Link>
                         </Col>
                     </Row>
                 </Form>

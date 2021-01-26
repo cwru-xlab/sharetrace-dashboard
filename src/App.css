@@ -14,7 +14,7 @@
   background-color: #626262;
   margin:0px auto;
   padding: 20px 0px 20px 0px;
-  font-family: Arial white;
+  font-family: Arial;
   color: white;
 }
 
@@ -30,6 +30,59 @@ address{
 
 .NavbarBrand {
   text-align: center;
+}
+
+.navbar{
+  font-family: Arial;
+  font-weight: bold;
+}
+
+.seperation {
+  color: #d7d7d7;
+}
+/* 
+.debit-table{
+  border-radius: 25px;
+  border: solid #d7d7d7 2px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: scroll;
+} */
+
+table {
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table td { 
+  padding: 0.5rem; 
+  border: 1px dotted #D7D7D7; 
+} 
+table th { 
+  padding: 0.5rem; 
+  border: 1px dotted #D7D7D7; 
+} 
+
+.inner-seperation {
+  color: #d7d7d7;
+  width: 95%;
+  margin-top: 0px;
+}
+
+.multi-select {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	width: 63%;
+	display: inline-block;
+	outline: none;
+	border: none;
+	height: 25px;
+	line-height: 25px;
+	font-size: 16px;
+	padding: 0;
 }
 
 
