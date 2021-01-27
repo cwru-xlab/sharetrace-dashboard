@@ -8,22 +8,22 @@ class AllUser extends Component{
     constructor(props){
         super(props);
         this.state = {
-            // users: [],
-            // added: [],
-            // removed: []
-            // Below is for test
-            users: [
-                {
-                    username: "bb-8",
-                    respondent: true
-                },
-                {
-                    username: "bb-9",
-                    respondent: false
-                }
-            ],
-            added: [false, false],
-            removed: [false, false]
+            users: [],
+            added: [],
+            removed: []
+            // // Below is for test
+            // users: [
+            //     {
+            //         username: "bb-8",
+            //         respondent: true
+            //     },
+            //     {
+            //         username: "bb-9",
+            //         respondent: false
+            //     }
+            // ],
+            // added: [false, false],
+            // removed: [false, false]
         }
 
         this.handleAdd = this.handleAdd.bind(this);

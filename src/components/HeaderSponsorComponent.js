@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Jumbotron, Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
-import {NavLink, Link} from 'react-router-dom';
-import {baseUrl} from '../shared/baseUrl';
+import { Navbar, NavbarBrand, Nav, NavbarToggler, Collapse, NavItem, Button} from 'reactstrap';
 
 class HeaderSponsor extends Component{
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, FormFeedback, Modal, ModalHeader, ModalBody, Row, Col, Label, Input} from 'reactstrap';
+import {Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Row, Col, Label} from 'reactstrap';
 import { Link } from 'react-router-dom';
 var config = require('../config');
 
@@ -9,20 +9,20 @@ class EditRespondent extends Component{
         super(props);
 
         this.state = {
-            // activities: [],
-            // all_activities: []
-            //For test
-            activities:[
-                {
-                    name: "activity_1",
-                    completed: "Completed"
-                },
-                {
-                    name: "activity_2",
-                    completed: "Incompleted"
-                }
-            ],
-            all_activities: ["activity_1", "activity_2", "activity_3", "activity_4"]
+            activities: [],
+            all_activities: []
+            // //For test
+            // activities:[
+            //     {
+            //         name: "activity_1",
+            //         completed: "Completed"
+            //     },
+            //     {
+            //         name: "activity_2",
+            //         completed: "Incompleted"
+            //     }
+            // ],
+            // all_activities: ["activity_1", "activity_2", "activity_3", "activity_4"]
         }
         
         this.handleSubmit = this.handleSubmit.bind(this);

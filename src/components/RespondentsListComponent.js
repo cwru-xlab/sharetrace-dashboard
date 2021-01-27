@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, FormFeedback, Modal, ModalHeader, ModalBody, Row, Col, Label, Input} from 'reactstrap';
+import {Breadcrumb, BreadcrumbItem} from 'reactstrap';
 import {Link} from 'react-router-dom';
 var config = require('../config');
 
@@ -8,18 +8,18 @@ class RespondentsList extends Component{
     constructor(props){
         super(props);
         this.state = {
-            // users: []
-            // Below is for test
-            users: [
-                {
-                    username: "bb-8",
-                    time_remaining: "6 days"
-                },
-                {
-                    username: "bb-9",
-                    time_remaining: "12 days"
-                }
-            ]
+            users: []
+            // // Below is for test
+            // users: [
+            //     {
+            //         username: "bb-8",
+            //         time_remaining: "6 days"
+            //     },
+            //     {
+            //         username: "bb-9",
+            //         time_remaining: "12 days"
+            //     }
+            // ]
         }
     }
 

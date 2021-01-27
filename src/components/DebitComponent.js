@@ -8,21 +8,22 @@ class Debit extends Component{
         super(props);
 
         this.state = {
-            sponsors: [
-                {
-                  name: "A",
-                  description: "AAA",
-                  time_remaining: "30 days"  
-                },
-                {
-                    name: "B",
-                    description: "BBB",
-                    time_remaining: "30 days"  
-                  }
-            ],
-            checked:[true, false]
-            // sponsors: [],
-            // checked: []
+            sponsors: [],
+            checked: []
+            // // For test only
+            // sponsors: [
+            //     {
+            //       name: "A",
+            //       description: "AAA",
+            //       time_remaining: "30 days"  
+            //     },
+            //     {
+            //         name: "B",
+            //         description: "BBB",
+            //         time_remaining: "30 days"  
+            //       }
+            // ],
+            // checked:[true, false]
         }
     }
 
