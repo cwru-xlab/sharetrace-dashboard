@@ -60,7 +60,7 @@ class Main extends Component{
                         <Route exact path="/debit" component={()=><Debit history={this.props.history} username={this.state.username} token={this.state.token}/>} />
                         <Route exact path="/settings" component={() => <Settings history={this.props.history} username={this.state.username} token={this.state.token} />} />
                         <Route exact path="/homeSponsor" component={() => <HomeSponsor username={this.state.username} token={this.state.token} />} />
-                        <Route exact path="/usersList" component={() => <AllUser username={this.state.username} token={this.state.token} />} />
+                        <Route exact path="/usersList" component={() => <AllUser history={this.props.history} username={this.state.username} token={this.state.token} />} />
                         <Redirect to="/users/login" />
                     </Switch>
                     <Footer />
