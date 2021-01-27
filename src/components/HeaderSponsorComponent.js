@@ -23,7 +23,7 @@ class HeaderSponsor extends Component{
     handeLogout(event){
         event.preventDefault();
         this.props.onUsernameChange(this.state.username, '');
-        this.props.history.push('/');
+        this.props.history.push('/users/login');
     }
 
     render(){
@@ -36,10 +36,12 @@ class HeaderSponsor extends Component{
                             <p style={{fontFamily:"Fantasy", color: "white"}}>ShareTarce</p>
                         </NavbarBrand>
                         <Collapse isOpen={this.state.isNavOpen} navbar>
-                            <Nav navbar>
-                                {/* <NavItem>
-                                    <NavLink className="nav-link" to="/home"><span className="fa fa-home fa-lg"></span> Home</NavLink>
-                                </NavItem> */}
+                            <Nav className="ml-auto" navbar>
+                                <NavItem>
+                                    <Button className="button-mr" outline onClick={this.handeLogout}>
+                                        <span className="fa fa-sign-out fa-lg"></span> Logout
+                                    </Button>
+                                </NavItem>
                             </Nav>
                         </Collapse>
                     </div>

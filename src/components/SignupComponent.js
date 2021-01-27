@@ -95,6 +95,7 @@ class Signup extends Component{
                             <FormGroup>
                                 <Label htmlFor="password">Password</Label>
                                 <Input type="password" id="password" name="password" value={this.state.password} valid={errors.password === ''} invalid={errors.password !== ''} onChange={this.handleLoginChange} onBlur={this.handleBlur('password')}/>
+                                <p style={{color: "blue"}}>Please rememeber your password since it cannot be reset!</p>
                                 <FormFeedback>{errors.password}</FormFeedback>
                             </FormGroup>
                         </Col>

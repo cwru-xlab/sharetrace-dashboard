@@ -31,7 +31,7 @@ class HeaderRespondent extends Component{
     handeLogout(event){
         event.preventDefault();
         this.props.onUsernameChange(this.state.username, '');
-        this.props.history.push('/');
+        this.props.history.push('/users/login');
     }
 
     render(){
@@ -53,6 +53,13 @@ class HeaderRespondent extends Component{
                                 </NavItem>
                                 <NavItem>
                                     <NavLink className="nav-link" to="/settings"><span className="fa fa-cog fa-lg"></span> Settings</NavLink>
+                                </NavItem>
+                            </Nav>
+                            <Nav className="ml-auto" navbar>
+                                <NavItem>
+                                    <Button className="button-mr" outline onClick={this.handeLogout}>
+                                        <span className="fa fa-sign-out fa-lg"></span> Logout
+                                    </Button>
                                 </NavItem>
                             </Nav>
                         </Collapse>
