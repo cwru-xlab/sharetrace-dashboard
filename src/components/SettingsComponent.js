@@ -107,7 +107,7 @@ class Settings extends Component {
                 </div>
                 <br />
                 <div style={{borderStyle:"solid", borderWidth: "1px", borderRadius: "5px", borderColor:"#D7D7D7"}}>
-                    <Form onSubmit={this.handleChangePWD}>
+                    {/* <Form onSubmit={this.handleChangePWD}>
                         <Row style={{marginTop: "15px", marginLeft: "10px", marginRight: "10px"}}>
                             <Col xs={12} md={9}>
                                 <FormGroup>
@@ -127,7 +127,7 @@ class Settings extends Component {
                         </Row>
                     </Form>
 
-                    <hr className="inner-seperation" />
+                    <hr className="inner-seperation" /> */}
 
                     <Form onSubmit={this.handleUnsubscription}>
                         <Row style={{marginTop: "15px", marginLeft: "10px", marginRight: "10px"}}>
