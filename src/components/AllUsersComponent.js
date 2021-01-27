@@ -105,7 +105,7 @@ class AllUser extends Component{
         })
 
         return(
-            <div className="container">
+            <div className="container" style={{minHeight: "750px"}}>
                 <br />
                 <div className="row">
                     <Breadcrumb>
