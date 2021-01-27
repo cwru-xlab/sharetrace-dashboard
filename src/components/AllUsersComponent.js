@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, FormFeedback, Modal, ModalHeader, ModalBody, Row, Col, Label, Input} from 'reactstrap';
+import {Breadcrumb, BreadcrumbItem, Button, Form, FormGroup, Col} from 'reactstrap';
 import {Link} from 'react-router-dom';
 var config = require('../config');
 
@@ -35,16 +35,20 @@ class AllUser extends Component{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'bearer '+this.props.token
+                'x-auth-token': this.props.token
             }
         })
         .then(res => res.json())
         .then(data => {
-            this.setState({
-                users: data.users,
-                added: new Array(data.users.length).fill().map(() => false),
-                removed: new Array(data.users.length).fill().map(() => false)
-            })
+            if(data.success){
+                this.setState({
+                    users: data.users,
+                    added: new Array(data.users.length).fill().map(() => false),
+                    removed: new Array(data.users.length).fill().map(() => false)
+                })
+            }
+            else
+                alert(JSON.stringify(data.err));
         })
     }
 
@@ -59,7 +63,7 @@ class AllUser extends Component{
             body: JSON.stringify(databody),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'bearer '+this.props.token
+                'x-auth-token': this.props.token
             }
         })
         .then(res => res.json())
@@ -133,7 +137,7 @@ class AllUser extends Component{
                     </FormGroup>
                     <br />
                     <FormGroup row>
-                        <Col sm={6} md={{size: 2, offset:9}}>
+                        <Col xs={{size: 6, offset: 5}} md={{size: 2, offset:9}}>
                             <Button type="submit" value="submit" style={{background:"#169BD5", width:"100%", fontFamily:"Arial Black", border:"none"}}>
                                 Confirm
                             </Button>
@@ -148,3 +152,4 @@ class AllUser extends Component{
 }
 
 export default AllUser;
+ 

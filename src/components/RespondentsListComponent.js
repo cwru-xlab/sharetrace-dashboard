@@ -28,14 +28,18 @@ class RespondentsList extends Component{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'bearer '+this.props.token
+                'x-auth-token': this.props.token
             }
         })
         .then(res => res.json())
         .then(data => {
-            this.setState({
-                users: data.users
-            })
+            if(data.success){
+                this.setState({
+                    users: data.users
+                })
+            }
+            else
+                alert(JSON.stringify(data.err));
         })
     }
 

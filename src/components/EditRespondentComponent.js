@@ -33,7 +33,7 @@ class EditRespondent extends Component{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'bearer '+this.props.token
+                'x-auth-token': this.props.token
             }
         })
         .then(res => res.json())
@@ -56,7 +56,7 @@ class EditRespondent extends Component{
             body: JSON.stringify(databody),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'bearer '+this.props.token
+                'x-auth-token': this.props.token
             }
         })
         .then(res => res.json())
@@ -137,7 +137,7 @@ class EditRespondent extends Component{
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-6 col-md-6 offset-md-3" style={{borderStyle:"solid",borderColor: "#D7D7D7", borderWidth:"1px", borderRadius:"5px"}}>
+                    <div className="col-10 offset-1 col-md-6 offset-md-3" style={{borderStyle:"solid",borderColor: "#D7D7D7", borderWidth:"1px", borderRadius:"5px"}}>
                         <div className="col-12">
                             <h6 style={{marginTop:"22px", fontFamily:"Arial Black"}}>Activities</h6>
                         </div>
@@ -151,8 +151,8 @@ class EditRespondent extends Component{
                                     this.state.activities.map((activity, index) => {
                                         return(
                                             <div key={index} className="row">
-                                                {activity !== "" && <p className="col-12 col-md-8 offset-md-1">{activity.name}: {activity.completed}</p>}
-                                                {activity === "" && <select className="col-12 col-md-8 offset-md-1" style={{border:"1px solid #D7D7D7", marginTop:"5px", borderRadius:"5px"}} value={activity.name} onChange={(e) => this.handleChange(e, index)}>
+                                                {activity !== "" && <p className="col-10 col-md-8 offset-md-1">{activity.name}: {activity.completed}</p>}
+                                                {activity === "" && <select className="col-10 col-md-8 offset-md-1" style={{border:"1px solid #D7D7D7", marginTop:"5px", borderRadius:"5px"}} value={activity.name} onChange={(e) => this.handleChange(e, index)}>
                                                     <option selected>Choose an activity</option>
                                                     {
                                                         this.state.all_activities.map((one_activity) => {
@@ -162,7 +162,7 @@ class EditRespondent extends Component{
                                                         })
                                                     }
                                                 </select>}
-                                                {activity.completed === "Incompleted" && <Button style={{background:"none", color:"#90999e", border:"none", textDecorationLine: "underline", fontSize:"10px"}} onClick={() => this.remove(index)}>Remove</Button>}
+                                                {activity.completed === "Incompleted" && <Button className="col-2" style={{background:"none", color:"#90999e", border:"none", textDecorationLine: "underline", fontSize:"10px"}} onClick={() => this.remove(index)}>Remove</Button>}
                                             </div>
                                         );
                                     })
@@ -184,7 +184,7 @@ class EditRespondent extends Component{
                 </div>
                 <br />
                 <div className="row">
-                    <div className="col-6 col-md-6 offset-md-3">
+                    <div className="col-12 col-md-6 offset-md-3">
                         <br />
                         <Form onSubmit={this.handleRemoveRespondent}>
                             <FormGroup>
@@ -200,3 +200,4 @@ class EditRespondent extends Component{
 }
 
 export default EditRespondent;
+ 

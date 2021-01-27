@@ -124,3 +124,4 @@ class Debit extends Component{
 }
 
 export default Debit;
+ 
