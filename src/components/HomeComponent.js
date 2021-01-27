@@ -22,14 +22,18 @@ class Home extends Component{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'bearer '+this.props.token
+                'x-auth-token': this.props.token
             }
         })
         .then(res => res.json())
         .then(data => {
-            this.setState({
-                sponsors: data.user.sponsors 
-            })
+            if(data.success){
+                this.setState({
+                    sponsors: data.user.sponsors 
+                })
+            }
+            else
+                alert(JSON.stringify(data.err));
         })
     }
 
@@ -47,7 +51,7 @@ class Home extends Component{
                 return(
                     <tr>
                         <td>{activity.activity_name}</td>
-                        <td><Link to={`/${sponsor}/${activity.activity_name}`}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></Link></td>
+                        <td><Link to={{pathname: `/activity`, state:{activity_name: activity.activity_name, link: activity.link}}}><i class="fa fa-pencil-square-o" aria-hidden="true"></i></Link></td>
                     </tr>
                 );
             })

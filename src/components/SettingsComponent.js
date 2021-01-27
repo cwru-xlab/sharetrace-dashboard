@@ -11,18 +11,10 @@ class Settings extends Component {
 
         this.state = {
             sponsors: [],
-            oldPWD: '',
-            newPWD: '',
-            unsubscriptions: [],
-            touched: {
-                oldPWD: false,
-                newPWD: false
-            }
+            unsubscriptions: []
         }
 
-        this.handleBlur = this.handleBlur.bind(this);
-        this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleChangePWD = this.handleChangePWD.bind(this);
+        this.handleMultiChange = this.handleMultiChange.bind(this);
         this.handleUnsubscription = this.handleUnsubscription.bind(this);
     }
 
@@ -31,35 +23,22 @@ class Settings extends Component {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'bearer '+this.props.token
+                'x-auth-token': this.props.token
             }
         })
         .then(res => res.json())
         .then(data => {
-            this.setState({
-                sponsors: data.sponsors
-            })
+            if(data.success){
+                this.setState({
+                    sponsors: data.sponsors.split(',')
+                })
+            }
+            else
+                alert(JSON.stringify(data.err));
         })
     }
 
-    handleBlur = (field) => (evt) => {
-        this.setState({
-            touched: { ...this.state.touched, [field]: true },
-        });
-    }
-
-    handleInputChange(event){
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
-
-        this.setState({
-            [name]: value
-        });
-    }
-
     handleMultiChange(event){
-
         var value = [];
         if(event != null){
             for(var i = 0;i < event.length;i++){
@@ -70,29 +49,29 @@ class Settings extends Component {
 
     }
 
-    handleChangePWD(event){
-
-    }
-
     handleUnsubscription(event){
-
-    }
-
-    validate(oldPWD, newPWD){
-
-        const errors = {
-            pwd: ''
+        event.preventDefault();
+        let databody = {
+            unsubscriptions: this.state.unsubscriptions
         }
-
-        if(this.state.touched.newPWD && this.state.touched.oldPWD && oldPWD === newPWD)
-            errors.pwd = 'New password cannot be the same as the old one!';
-        
-        return errors;
+        fetch(config.serverUrl+'/settings/'+this.props.username, {
+            method: 'PUT',
+            body: JSON.stringify(databody),
+            headers: {
+                'Content-Type': 'application/json',
+                'x-auth-token': this.props.token
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.success) this.props.history.push('/home');
+            else
+                alert(JSON.stringify(data.err));
+        })
     }
 
     render() {
 
-        const errors = this.validate(this.state.oldPWD, this.state.newPWD);
         const {unsubscription} = this.state;
         const options = this.state.sponsors.map((sponsor) => {
             return(

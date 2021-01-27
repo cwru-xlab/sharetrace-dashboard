@@ -102,12 +102,12 @@ class Login extends Component{
                         </Col>
                     </Row>
                     <Row>
-                        <Col xs={12} md={{size: 2, offset:3}}>
+                        <Col xs={6} md={{size: 2, offset:3}}>
                             <FormGroup>
                                 <Button type="submit" value="submit" color="primary" style={{width: "100%"}}>Login</Button>
                             </FormGroup>
                         </Col>
-                        <Col xs={12} md={{size: 5}}>
+                        <Col xs={6} md={{size: 5}}>
                             <Link style={{position:"absolute", bottom:"10px", textDecoration:"underline"}} to={{pathname: `/users/signup`}}>Create a new account</Link>
                         </Col>
                     </Row>

@@ -1,33 +1,13 @@
 import React, {Component} from 'react';
-import config from '../config';
 
 class Activity extends Component{
 
     constructor(props){
         super(props);
         this.state = {
-            name: "",
-            link: "",
-            expiration: ""
+            name: this.props.location.state.activity_name,
+            link: this.props.location.state.link
         };
-    }
-
-    componentDidMount(){
-        fetch(config.serverUrl+this.props.path, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'bearer '+this.props.token
-            }
-        })
-        .then(res => res.json())
-        .then(data => {
-            this.setState({
-                name: data.activity_name,
-                link: data.link,
-                expiration: data.expiration_date
-            })
-        })
     }
 
     render() {

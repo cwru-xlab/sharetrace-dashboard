@@ -31,15 +31,19 @@ class Debit extends Component{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'bearer '+this.props.token
+                'x-auth-token': this.props.token
             }
         })
         .then(res => res.json())
         .then(data => {
-            this.setState({
-                sponsors: data.sponsors,
-                checked: new Array(data.sponsors.length).fill().map(() => false)
-            })
+            if(data.success){
+                this.setState({
+                    sponsors: data.sponsors,
+                    checked: new Array(data.sponsors.length).fill().map(() => false)
+                })
+            }
+            else
+                alert(JSON.stringify(data.err));
         })
     }
 
@@ -53,7 +57,7 @@ class Debit extends Component{
             body: JSON.stringify(databody),
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'bearer '+this.props.token
+                'x-auth-token': this.props.token
             }
         })
         .then(res => res.json())
@@ -67,7 +71,6 @@ class Debit extends Component{
     handleChange(event, index){
         this.state.checked[index] = event.target.checked;
         this.setState({checked: this.state.checked});
-        alert(JSON.stringify(this.state.checked));
     }
 
     render(){
@@ -107,7 +110,7 @@ class Debit extends Component{
                     </FormGroup>
                     <br />
                     <FormGroup row>
-                        <Col sm={6} md={{size: 2, offset:9}}>
+                        <Col xs={{size:5, offset: 6}} md={{size: 2, offset:9}}>
                             <Button type="submit" value="submit" style={{background:"#169BD5", width:"100%", fontFamily:"Arial Black", border:"none"}}>
                                 Confirm
                             </Button>

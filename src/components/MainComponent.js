@@ -38,7 +38,7 @@ class Main extends Component{
         ]
         const respondent = [
             '/home',
-            '/:sponsor/:activity',
+            '/activity',
             '/debit',
             '/settings'
         ]
@@ -60,7 +60,7 @@ class Main extends Component{
                         <Route exact path="/users/login" component={()=><Login history={this.props.history} onUsernameChange={this.onUsernameChange}/>} />
                         <Route exact path="/users/signup" component={()=><Signup history={this.props.history} />} />
                         <Route exact path="/home" component={()=><Home history={this.props.history} username={this.state.username} token={this.state.token}/>} />
-                        <Route exact path="/:sponsor/:activity" component={()=><Activity path={this.props.location.pathname} token={this.state.token}/>} />
+                        <Route exact path="/activity" component={()=><Activity history={this.props.history} location={this.props.location} username={this.state.username} token={this.state.token}/>} />
                         <Route exact path="/debit" component={()=><Debit history={this.props.history} username={this.state.username} token={this.state.token}/>} />
                         <Route exact path="/settings" component={() => <Settings history={this.props.history} username={this.state.username} token={this.state.token} />} />
                         <Route exact path="/homeSponsor" component={() => <HomeSponsor username={this.state.username} token={this.state.token} />} />
