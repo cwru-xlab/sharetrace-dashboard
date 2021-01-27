@@ -47,7 +47,7 @@ class RespondentsList extends Component{
                         <td>{user.username}</td>
                         <td>{user.time_remaining}</td>
                         <td>
-                            <Link to={`/editRespondent/${user.username}`} style={{ fontFamily:"Arial Black"}}><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</Link>
+                            <Link to={{ pathname: "/editRespondent" , state: { respondent: user.username, time_remaining: user.time_remaining } }} style={{ fontFamily:"Arial Black"}}><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Edit</Link>
                         </td>
                     </tr>
             );

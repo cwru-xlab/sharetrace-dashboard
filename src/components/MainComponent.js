@@ -11,6 +11,7 @@ import Settings from './SettingsComponent';
 import HomeSponsor from './HomeSponsorComponent';
 import AllUser from './AllUsersComponent';
 import RespondentsList from './RespondentsListComponent';
+import EditRespondent from './EditRespondentComponent';
 import Footer from './FooterComponent';
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 
@@ -45,7 +46,8 @@ class Main extends Component{
         const sponsor = [
             '/homeSponsor',
             '/usersList',
-            '/respondentsList'
+            '/respondentsList',
+            '/editRespondent'
         ]
         
         return(
@@ -64,6 +66,7 @@ class Main extends Component{
                         <Route exact path="/homeSponsor" component={() => <HomeSponsor username={this.state.username} token={this.state.token} />} />
                         <Route exact path="/usersList" component={() => <AllUser history={this.props.history} username={this.state.username} token={this.state.token} />} />
                         <Route exact path="/respondentsList" component={() => <RespondentsList history={this.props.history} username={this.state.username} token={this.state.token} />} />
+                        <Route exact path="/editRespondent" component={() => <EditRespondent history={this.props.history} location={this.props.location} username={this.state.username} token={this.state.token} />} />
                         <Redirect to="/users/login" />
                     </Switch>
                     <Footer />
