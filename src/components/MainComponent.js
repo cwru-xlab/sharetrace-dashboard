@@ -10,6 +10,7 @@ import Debit from './DebitComponent';
 import Settings from './SettingsComponent';
 import HomeSponsor from './HomeSponsorComponent';
 import AllUser from './AllUsersComponent';
+import RespondentsList from './RespondentsListComponent';
 import Footer from './FooterComponent';
 import {Switch, Route, Redirect, withRouter} from 'react-router-dom';
 
@@ -43,7 +44,8 @@ class Main extends Component{
 
         const sponsor = [
             '/homeSponsor',
-            '/usersList'
+            '/usersList',
+            '/respondentsList'
         ]
         
         return(
@@ -61,6 +63,7 @@ class Main extends Component{
                         <Route exact path="/settings" component={() => <Settings history={this.props.history} username={this.state.username} token={this.state.token} />} />
                         <Route exact path="/homeSponsor" component={() => <HomeSponsor username={this.state.username} token={this.state.token} />} />
                         <Route exact path="/usersList" component={() => <AllUser history={this.props.history} username={this.state.username} token={this.state.token} />} />
+                        <Route exact path="/respondentsList" component={() => <RespondentsList history={this.props.history} username={this.state.username} token={this.state.token} />} />
                         <Redirect to="/users/login" />
                     </Switch>
                     <Footer />
